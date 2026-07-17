@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <!-- 1. 介面鎖定：禁止使用者 (或長輩) 雙擊放大或縮放，確保永遠滿版 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 2. 內容安全策略 (CSP)：這是防駭客的關鍵！
+         嚴格限制這個網頁只能載入你指定的 Google 網域 iframe，防止被惡意注入其他不明程式碼 (XSS 攻擊) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src https://script.google.com https://script.googleusercontent.com; style-src 'unsafe-inline';">
+    
+    <!-- 3. 隱私保護：不向 Google 傳送訪客是從哪個網址點進來的 -->
+    <meta name="referrer" content="no-referrer">
+    
+    <title>薪資提升差額試算表-計算器</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+            
+            /* 4. 防止選取與長按：防止長輩誤觸叫出選單，同時稍微防範一般人隨意複製文字 */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        .fullscreen-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<!-- 5. 禁用右鍵選單 (防君子不防小人，但能有效阻止不懂程式的人亂看原始碼) -->
+<body oncontextmenu="return false;">
+
+    <iframe 
+        class="fullscreen-iframe" 
+        src="https://script.google.com/macros/s/AKfycbwjWQPtWQjRFST9q6abv6Fw1m4Fxh_OLLvhpXSMqByPTXi8d-rRSw9d6EZ2KuQoQlnk/exec" 
+        allowfullscreen>
+    </iframe>
+
+</body>
+</html>
